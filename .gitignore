@@ -1,0 +1,16 @@
+# Dependencias y configuración local de herramientas.
+node_modules/
+opencode.json
+opencode.jsonc
+.opencode/package.json
+.opencode/package-lock.json
+
+# Credenciales y archivos locales.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.log
+.DS_Store
+Thumbs.db

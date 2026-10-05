@@ -1,0 +1,128 @@
+:root {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  --paper: #f8faff;
+  --ink: #20365d;
+  --blue: #284fc4;
+  --margin: #b74468;
+  --rule: #d7e0f0;
+  --muted: #53647e;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+::selection { background: var(--rule); color: var(--ink); }
+.container { width: min(100% - 64px, 1120px); margin: 64px auto; }
+.page-header { margin-bottom: 40px; }
+h1 { margin: 0 0 12px; font: normal clamp(2.7rem, 6vw, 4.5rem)/1.08 Georgia, "Times New Roman", serif; letter-spacing: -0.045em; }
+h2 { margin: 0; font-size: 1.3rem; line-height: 1.3; }
+p { margin: 0; }
+.page-header p { color: var(--muted); font-size: 1.05rem; max-width: 55ch; }
+.diary-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 48px; align-items: start; }
+
+/* El margen une el formulario y las entradas como páginas de un cuaderno. */
+.notebook { position: relative; min-width: 0; background: #fff; border: 1px solid var(--rule); border-radius: 4px 18px 18px 4px; box-shadow: 5px 5px 0 var(--rule); }
+.notebook::before { content: ""; position: absolute; top: 0; bottom: 0; left: 28px; width: 2px; background: var(--margin); opacity: 0.5; }
+.entry-section, .history-section { padding: 32px 32px 32px 52px; }
+.section-intro { color: var(--muted); margin: 8px 0 24px; }
+.history-section { border-top: 1px solid var(--rule); }
+.history-section h2 { margin-bottom: 20px; }
+.form-fields { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 20px; }
+.field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.field-topic { grid-column: 1 / -1; }
+fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+fieldset:disabled { opacity: 0.65; }
+label { font-size: 0.9rem; font-weight: 700; }
+input, #session-form button { font: inherit; border-radius: 6px; min-height: 48px; }
+input { width: 100%; min-width: 0; padding: 11px 12px; border: 1px solid #9cacc5; background: var(--paper); color: var(--ink); }
+input::placeholder { color: var(--muted); opacity: 1; }
+#session-form button { margin-top: 24px; padding: 12px 26px; border: 1px solid var(--blue); background: var(--blue); color: #fff; font-weight: 700; cursor: pointer; }
+#session-form button:hover { background: var(--ink); border-color: var(--ink); }
+#session-form button:active { transform: translateY(1px); }
+input:focus-visible, #session-form button:focus-visible { outline: 3px solid var(--margin); outline-offset: 4px; }
+.message { margin-top: 16px; color: var(--blue); font-size: 0.95rem; overflow-wrap: anywhere; }
+.message:empty { display: none; }
+.message.error { color: #a12e43; }
+.empty-message { max-width: 46ch; padding: 12px 0 24px; color: var(--muted); }
+.session-list { margin: 0; padding: 0; list-style: none; }
+.session-list li { display: flex; align-items: start; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; padding: 20px 0; border-bottom: 1px solid var(--rule); }
+.session-list li:first-child { padding-top: 0; }
+.session-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.session-details { min-width: 0; flex: 1 1 180px; }
+.session-topic { display: block; overflow-wrap: anywhere; font-weight: 700; }
+.session-date { display: block; margin-top: 3px; color: var(--muted); font-size: 0.85rem; }
+.session-minutes { max-width: 100%; overflow-wrap: anywhere; color: var(--blue); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+
+.progress-panel { min-width: 0; padding-top: 8px; }
+.streak-card, .weekly-card, .monthly-card { padding: 24px 0; border-bottom: 1px solid var(--rule); }
+.streak-card:first-child { padding-top: 0; }
+.monthly-card { border-bottom: 0; }
+.progress-panel h2 { font-size: 1rem; font-weight: 700; }
+.streak-value, .weekly-value, .monthly-value { margin: 8px 0; color: var(--blue); font-size: 2.5rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.streak-card:first-child .streak-value { font-size: 3.5rem; }
+#streak-unit, #best-streak-unit, .weekly-unit, .monthly-unit { font-size: 1rem; font-weight: 400; letter-spacing: normal; color: var(--ink); }
+.streak-card > p:last-child, .weekly-card > p:last-child, .monthly-card > p:last-child { color: var(--muted); font-size: 0.9rem; max-width: 32ch; }
+
+@media (max-width: 850px) {
+  .container { width: min(100% - 40px, 680px); margin: 40px auto; }
+  .diary-layout { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .progress-panel { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; }
+  .streaks { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  .streak-card:first-child { padding-top: 24px; }
+  .streak-card:first-child .streak-value { font-size: 2.5rem; }
+  .weekly-card, .monthly-card { border-bottom: 0; }
+}
+
+@media (max-width: 480px) {
+  .container { width: calc(100% - 32px); margin: 28px auto; }
+  .page-header { margin-bottom: 28px; }
+  .page-header p { font-size: 1rem; }
+  .notebook::before { left: 12px; }
+  .entry-section, .history-section { padding: 24px 20px 24px 28px; }
+  .form-fields { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  #session-form button { width: 100%; }
+  .progress-panel, .streaks { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .weekly-card { border-bottom: 1px solid var(--rule); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #session-form button:active { transform: none; }
+}
+
+.heat-section { padding: 32px 24px 32px 52px; border-top: 1px solid var(--rule); min-width: 0; }
+.heat-range { margin-top: 14px; font-size: 0.95rem; }
+.heat-today, .heat-help { margin-top: 8px; color: var(--muted); font-size: 0.85rem; }
+.heat-scroll { overflow-x: auto; padding: 10px 5px; margin: 14px -5px; }
+#heat-table { border-collapse: separate; border-spacing: 5px 7px; table-layout: fixed; width: 455px; }
+#heat-table th { font-size: 0.72rem; font-weight: 400; color: var(--muted); text-align: left; }
+#heat-table thead th { vertical-align: bottom; overflow-wrap: anywhere; line-height: 1.4; }
+.heat-month { display: block; white-space: nowrap; }
+#heat-table th:first-child { width: 35px; }
+#heat-table td { padding: 0; }
+.heat-day { display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; padding: 0; margin: 0; border: 1px solid transparent; border-radius: 3px; font: bold 16px/1 "Trebuchet MS", sans-serif; }
+button.heat-day { cursor: pointer; }
+.heat-level-0 { background: #eef3ff; color: #20365d; }
+.heat-level-1 { background: #b4c9f5; color: #20365d; }
+.heat-level-2 { background: #799de0; color: #20365d; }
+.heat-level-3 { background: #4268b4; color: #fff; }
+.heat-level-4 { background: #20365d; color: #fff; }
+.heat-future { background: transparent; border: 1px dashed #71829d; color: var(--muted); }
+.heat-day[aria-pressed="true"] { box-shadow: 0 0 0 2px #fff; outline: 2px solid #20365d; outline-offset: 2px; }
+.heat-day:focus-visible { box-shadow: 0 0 0 2px #fff; outline: 3px dashed #20365d; outline-offset: 2px; }
+.heat-legend { list-style: none; padding: 0; margin: 12px 0 20px; display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: 0.75rem; color: var(--muted); }
+.heat-legend li { display: flex; align-items: center; gap: 6px; }
+.heat-swatch { width: 12px; height: 12px; border-radius: 2px; flex-shrink: 0; }
+.heat-detail { min-height: 3.2em; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 0.95rem; overflow-wrap: anywhere; }
+.heat-full-total { margin-top: 8px; font-size: 0.9rem; }
+.heat-full-total summary { color: var(--blue); cursor: pointer; padding: 8px 0; }
+.heat-full-total summary:focus-visible { outline: 3px solid var(--margin); outline-offset: 3px; }
+.heat-full-total p { margin-top: 8px; overflow-wrap: anywhere; }
+#heat-error:focus { outline: 3px solid var(--margin); outline-offset: 4px; }
+[hidden] { display: none !important; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-width: 480px) {
+  .heat-section { padding: 24px 20px 24px 28px; }
+}

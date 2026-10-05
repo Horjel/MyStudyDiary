@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diario de Estudio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="study-logic.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <h1>Diario de Estudio</h1>
+      <p>Un lugar para anotar lo que aprendes, un día a la vez.</p>
+    </header>
+
+    <div class="diary-layout">
+    <div class="notebook">
+      <section class="entry-section" aria-labelledby="form-title">
+        <h2 id="form-title">Registrar una sesión</h2>
+        <p class="section-intro">¿Qué has estudiado? Deja aquí tu sesión.</p>
+        <form id="session-form">
+          <fieldset id="session-fields">
+          <div class="form-fields">
+            <div class="field field-topic">
+              <label for="topic">Tema</label>
+              <input type="text" id="topic" name="topic" placeholder="Por ejemplo, ecuaciones de segundo grado" required>
+            </div>
+            <div class="field">
+              <label for="date">Fecha de estudio</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            <div class="field">
+              <label for="minutes">Minutos</label>
+              <input type="number" id="minutes" name="minutes" min="0" step="any" placeholder="30" required>
+            </div>
+          </div>
+          <button type="submit">Guardar sesión</button>
+          </fieldset>
+          <p id="message" class="message" role="status"></p>
+        </form>
+      </section>
+
+      <section class="heat-section" aria-labelledby="heat-title">
+        <h2 id="heat-title">Actividad de las últimas semanas</h2>
+        <p id="heat-error" class="message error" role="status" tabindex="-1" hidden></p>
+        <div id="heat-content">
+          <p id="heat-range" class="heat-range"></p>
+          <p id="heat-today" class="heat-today"></p>
+          <p id="heat-help" class="heat-help">Selecciona un día para consultar sus minutos. Con el teclado, usa las flechas y confirma con Enter o Espacio.</p>
+          <div class="heat-scroll">
+            <table id="heat-table" aria-label="Calendario de estudio de doce semanas" aria-describedby="heat-help"></table>
+          </div>
+          <ul class="heat-legend" aria-label="Minutos por día">
+            <li><span class="heat-swatch heat-level-0" aria-hidden="true"></span>0 min</li>
+            <li><span class="heat-swatch heat-level-1" aria-hidden="true"></span>Más de 0 y menos de 30</li>
+            <li><span class="heat-swatch heat-level-2" aria-hidden="true"></span>30 a menos de 60</li>
+            <li><span class="heat-swatch heat-level-3" aria-hidden="true"></span>60 a menos de 120</li>
+            <li><span class="heat-swatch heat-level-4" aria-hidden="true"></span>120 min o más</li>
+          </ul>
+          <p id="heat-detail" class="heat-detail" role="status" aria-atomic="true"></p>
+          <details id="heat-full-total" class="heat-full-total" hidden>
+            <summary>Ver total completo</summary>
+            <p id="heat-full-value"></p>
+          </details>
+          <p id="heat-empty" class="heat-help">No hay sesiones entre el inicio del periodo y hoy. Registra una sesión para verla aquí.</p>
+        </div>
+      </section>
+
+      <section class="history-section" aria-labelledby="sessions-title">
+        <h2 id="sessions-title">Mis sesiones</h2>
+        <p id="empty-message" class="empty-message">Tu diario empieza con una sesión. Completa el formulario de arriba para guardarla aquí.</p>
+        <ul id="session-list" class="session-list"></ul>
+      </section>
+    </div>
+
+    <aside class="progress-panel" aria-label="Tu progreso de estudio">
+    <div class="streaks">
+      <section class="streak-card" aria-labelledby="streak-title">
+        <h2 id="streak-title">Racha actual</h2>
+        <p class="streak-value" aria-live="polite"><span id="streak-count">0</span> <span id="streak-unit">días</span></p>
+        <p id="streak-message" aria-live="polite"></p>
+      </section>
+      <section class="streak-card" aria-labelledby="best-streak-title">
+        <h2 id="best-streak-title">Mejor racha</h2>
+        <p class="streak-value" aria-live="polite"><span id="best-streak-count">0</span> <span id="best-streak-unit">días</span></p>
+        <p>Tu mayor número de días seguidos hasta hoy.</p>
+      </section>
+    </div>
+
+    <section class="card weekly-card" aria-labelledby="weekly-title">
+      <h2 id="weekly-title">Minutos esta semana</h2>
+      <p class="weekly-value" aria-live="polite"><span id="weekly-minutes-count">0</span> <span id="weekly-minutes-unit" class="weekly-unit">min</span></p>
+      <p>Desde el lunes hasta hoy.</p>
+    </section>
+
+    <section class="card monthly-card" aria-labelledby="monthly-title">
+      <h2 id="monthly-title">Días estudiados este mes</h2>
+      <p class="monthly-value" aria-live="polite"><span id="monthly-days-count">0</span> <span id="monthly-days-unit" class="monthly-unit">días</span></p>
+      <p>Desde el primer día del mes hasta hoy.</p>
+    </section>
+
+    </aside>
+    </div>
+  </main>
+</body>
+</html>
