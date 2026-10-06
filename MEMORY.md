@@ -2,6 +2,7 @@
 
 ## Estado actual
 - Repositorio público creado: https://github.com/Horjel/MyStudyDiary, rama main. Git inicializado; .gitignore excluye dependencias, configuración local y credenciales. Preparación para publicación verificada con node --test (26/26).
+- Portfolio: README explica desarrollo asistido por IA y atribución autor/asistente, enlaza proceso/evidencias y capturas ficticias en docs/screenshots. Demo https://horjel.github.io/MyStudyDiary/ con Pages desde main y .nojekyll; comprobados guardado, recarga, móvil 375 px y consola limpia. Descripción/temas de GitHub actualizados; node --test 26/26.
 - Constitución en `docs/constitution.md`; spec, plan, tareas y evidencias del mapa en `specs/001-heat-map/`.
 - Mapa implementado: doce semanas, intensidad por minutos diarios, detalle por selección, fechas futuras diferenciadas y actualización al cambiar de día.
 - Las 38 tareas cerradas: fallos del desplegable corregidos, zona horaria en sesión y plazo real verificados. El usuario confirmó que la prueba manual pendiente de suspensión/retorno funciona bien; evidencia atribuida al usuario, como la prueba de voz anterior.
