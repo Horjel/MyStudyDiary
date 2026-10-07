@@ -1,6 +1,7 @@
 # Memoria del proyecto
 
 ## Estado actual
+- Comandos reutilizables SDD en .opencode/commands/ con skill .opencode/skills/sdd/SKILL.md; feature sin el «3» inválido y cabeceras multilínea corregidas. Reiniciar OpenCode para cargar los cambios. Publicación de comandos y su skill; modificación independiente de AGENTS.md sin incluir.
 - Repositorio público creado: https://github.com/Horjel/MyStudyDiary, rama main. Git inicializado; .gitignore excluye dependencias, configuración local y credenciales. Preparación para publicación verificada con node --test (26/26).
 - Portfolio: README explica desarrollo asistido por IA y atribución autor/asistente, enlaza proceso/evidencias y capturas ficticias en docs/screenshots. Demo https://horjel.github.io/MyStudyDiary/ con Pages desde main y .nojekyll; comprobados guardado, recarga, móvil 375 px y consola limpia. Descripción/temas de GitHub actualizados; node --test 26/26.
 - Constitución en `docs/constitution.md`; spec, plan, tareas y evidencias del mapa en `specs/001-heat-map/`.
